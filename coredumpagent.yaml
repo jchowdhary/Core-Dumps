@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: coredump
+spec:
+  selector:
+    matchLabels:
+      app: coredump
+  template:
+    metadata:
+      labels:
+        app: coredump
+    spec:
+      imagePullSecrets:
+      - name: mitel	
+      containers:
+      - name: coredump
+        image: gcr.io/projects-jayant/coredump/coredump0.1:1
+#        command: [ "/bin/sh", "-c", "--" ]
+#        args: [ "while true; do sleep 30; done;" ]
+        command:
+        - /bin/sh
+        - -c
+        - sh /usr/sbin/watchnotify.sh
+        volumeMounts:
+        - mountPath: /mnt
+          name: config-data
+          subPath: coredump
+      volumes:
+      - name: config-data
+        persistentVolumeClaim:
+          claimName: storage-pvc
+      nodeSelector:
+        beta.kubernetes.io/os: linux
