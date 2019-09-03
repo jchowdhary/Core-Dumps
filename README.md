@@ -10,3 +10,6 @@ I intentionally not putting much YAML files so that user's can go through and pr
 Hope this may help somebody in their use-cases.
 
 NOTE: Try to View the attached document file in Web Mode so that some portion of the document is not lost due to formatting issues.
+
+https://medium.com/@joyshanker78/handling-core-dumps-in-kubernetes-clusters-in-gcp-b1b2a54c25dc
+https://dzone.com/articles/handling-core-dumps-across-clusters
